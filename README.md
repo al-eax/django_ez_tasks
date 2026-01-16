@@ -6,9 +6,8 @@ Built on Django 6's BackgroundTask API with additional simple backends.
 
 ## Installation
 
-
 ```bash
-pip install git+https://github.com/al-eax/django_ez_tasks.git
+ uv add git+https://github.com/al-eax/django_ez_tasks.git
 ```
 
 ## Quick Start
