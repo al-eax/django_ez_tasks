@@ -4,8 +4,15 @@
 [![Latest on Django Packages](https://img.shields.io/badge/Published%20on-Django%20Packages-0c3c26)](https://djangopackages.org/packages/p/django_ez_tasks/)
                         
 
-A Django app built on top of [Django 6's Task framework](https://docs.djangoproject.com/en/6.0/topics/tasks/) that allows you to
+A lightweight Django app built on top of [Django 6's Task framework](https://docs.djangoproject.com/en/6.0/topics/tasks/) that allows you to
 run threaded tasks in background, without a database or worker process.
+
+__Why?__
+
+For small projects and debugging.
+Django's built-in `ImmediateBackend` is blocking your request and waits for the task to complete. 
+The `DatabaseBackend` from [django-tasks](https://github.com/RealOrangeOne/django-tasks) requires a database connection and a separate worker process.
+
 
 
 ## Installation
