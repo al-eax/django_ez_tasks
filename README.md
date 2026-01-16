@@ -53,7 +53,7 @@ TASKS = {
 Define a task using the `@task` decorator:
 
 ```python
-from django.tasks import task
+from django.tasks import task, default_task_backend
 from django.tasks.signals import task_enqueued, task_started, task_finished
 
 # Define tasks
@@ -72,9 +72,12 @@ task_finished.connect(lambda sender, task_result, **kw: print(f"Task {task_resul
 
 # This returns immediately - the task runs in a background thread
 result = send_welcome_email.enqueue(user_id=42)
+task_id = result.id  # Save the task ID for later
 
-# You can check the result later
-print(result.id)  # Task ID for tracking
+# Retrieve the result later from anywhere in your code
+task_result = default_task_backend.get_result(task_id)
+print(task_result.status)        # e.g., TaskResultStatus.SUCCESSFUL
+print(task_result.return_value)  # e.g., "Email sent to user@example.com"
 ```
 
 ## Contributing
