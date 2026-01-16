@@ -1,7 +1,8 @@
 # Django EZ Tasks
 
-A simple,  Django app for managing background tasks with multiple execution backends. 
-Built on Django 6's BackgroundTask API with additional simple backends.
+A Django app built on top of Django 6's `BaseTaskBackend` that allows you to
+run threaded tasks in background, without a database or worker process.
+
 
 
 ## Installation
