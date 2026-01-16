@@ -1,8 +1,7 @@
 # Django EZ Tasks
 
-A Django app built on top of Django 6's `BaseTaskBackend` that allows you to
+A Django app built on top of [Django 6's Task framework](https://docs.djangoproject.com/en/6.0/topics/tasks/) that allows you to
 run threaded tasks in background, without a database or worker process.
-
 
 
 ## Installation
@@ -55,7 +54,9 @@ Define a task using the `@task` decorator:
 
 ```python
 from django.tasks import task
+from django.tasks.signals import task_enqueued, task_started, task_finished
 
+# Define tasks
 @task
 def send_welcome_email(user_id: int) -> str:
     """Send a welcome email to a new user."""
@@ -64,13 +65,17 @@ def send_welcome_email(user_id: int) -> str:
     return f"Email sent to {user.email}"
 
 
+# Connect signals (e.g., in your AppConfig.ready())
+task_enqueued.connect(lambda sender, task_result, **kw: print(f"Task {task_result.id} enqueued"))
+task_started.connect(lambda sender, task_result, **kw: print(f"Task {task_result.id} started"))
+task_finished.connect(lambda sender, task_result, **kw: print(f"Task {task_result.id} finished: {task_result.status}, return value: {task_result.return_value}"))
+
 # This returns immediately - the task runs in a background thread
 result = send_welcome_email.enqueue(user_id=42)
 
 # You can check the result later
 print(result.id)  # Task ID for tracking
 ```
-
 
 ## Contributing
 
