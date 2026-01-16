@@ -152,20 +152,3 @@ class ThreadPoolBackend(ImmediateBackend):
             for executor in cls._executors.values():
                 executor.shutdown(wait=wait)
             cls._executors.clear()
-
-
-def _run_task_in_process(task_func, args, kwargs, result_dict, result_id):
-    """
-    Helper function to run a task in a separate process.
-
-    This function is defined at module level to be picklable.
-    """
-    try:
-        result = task_func(*args, **kwargs)
-        result_dict[result_id] = {
-            "status": "completed",
-            "result": result,
-            "error": None,
-        }
-    except Exception as e:
-        result_dict[result_id] = {"status": "failed", "result": None, "error": str(e)}
