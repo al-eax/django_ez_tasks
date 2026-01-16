@@ -13,7 +13,7 @@ dependencies = [
     "django>=6",
 ]
 authors = [
-    {name = "Alexander Hinze-Huettl", email = "yourname@example.com"},
+    {name = "Alexander Hinze-Huettl", email = "hinze.alex@gmail.com"},
 ]
 classifiers = [
     "Environment :: Web Environment",
