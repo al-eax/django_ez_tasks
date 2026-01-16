@@ -1,5 +1,9 @@
 # Django EZ Tasks
 
+
+[![Latest on Django Packages](https://img.shields.io/badge/Published%20on-Django%20Packages-0c3c26)](https://djangopackages.org/packages/p/django_ez_tasks/)
+                        
+
 A Django app built on top of [Django 6's Task framework](https://docs.djangoproject.com/en/6.0/topics/tasks/) that allows you to
 run threaded tasks in background, without a database or worker process.
 
