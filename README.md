@@ -18,9 +18,9 @@ The `DatabaseBackend` from [django-tasks](https://github.com/RealOrangeOne/djang
 ## Installation
 
 ```bash
- uv add git+https://github.com/al-eax/django_ez_tasks.git
+uv add django-ez-tasks
 # or
-pip install git+https://github.com/al-eax/django_ez_tasks.git
+pip install django-ez-tasks
 ```
 
 ## Quick Start
